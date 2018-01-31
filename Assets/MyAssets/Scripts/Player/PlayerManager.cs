@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
+    public static int maxHealth;
+    public static int curHealth;
+    public static int maxMana;
+    public static int curMana;
+
+    private GameObject playerMovement;
+
+    void Awake() {
+        if (playerMovement == null) Instantiate(playerMovement);
+        maxHealth = 100;
+        curHealth = maxHealth;
+        maxMana = 100;
+        curMana = maxMana;
+    }
+    
 	// Use this for initialization
 	void Start () {
 		

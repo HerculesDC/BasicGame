@@ -8,11 +8,18 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float horAccel;
     [SerializeField] private float vertForce;
 
+    public static PlayerMovement instance = null;
+
     private Rigidbody2D rb2D;
     private bool isGrounded;
     private bool hasDoubleJumped;
 
     void Awake() {
+
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+
         rb2D = GetComponent<Rigidbody2D>();
         InvokeRepeating("ShowVel", 0.0f, 1.0f);
         isGrounded = false; // added to avoid errors, think I can do away with that later
@@ -37,6 +44,11 @@ public class PlayerMovement : MonoBehaviour {
                 rb2D.AddForce(Vector2.up * vertForce);
 
         } else {
+
+            if (rb2D.velocity.sqrMagnitude >= 0 && rb2D.velocity.sqrMagnitude <= 3)
+                rb2D.AddForce(Vector2.right * horAccel/2.0f * Input.GetAxis("Horizontal"));
+            else if (rb2D.velocity.sqrMagnitude > 3 && rb2D.velocity.sqrMagnitude < maxHorSpeed)
+                rb2D.AddForce(Vector2.right * horAccel / (2.0f * rb2D.velocity.sqrMagnitude) * Input.GetAxis("Horizontal"));
 
             if (!hasDoubleJumped) {
                 if (Input.GetKeyDown(KeyCode.Space)) { 

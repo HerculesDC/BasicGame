@@ -78,9 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MyAssets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\MyAssets\Scripts\Loader.cs" />
     <Compile Include="Assets\MyAssets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\MyAssets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\MyAssets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\MyAssets\Scripts\Player\Spells\Fireball.cs" />
     <Compile Include="Assets\Particlecollection_Free samples\Plugins\Effect\Script\CameraTarget.cs" />
     <Compile Include="Assets\Particlecollection_Free samples\Plugins\Effect\Script\EffectController.cs" />
     <Compile Include="Assets\Particlecollection_Free samples\Plugins\Effect\Script\EffectDemo.cs" />
