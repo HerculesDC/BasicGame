@@ -13,12 +13,15 @@ public class Fireball : MonoBehaviour {
     public static int manaCost = 5;
 
     private Color emission;
+    private GameObject sprite;
     private GameObject particles;
 
     void Awake() {
-        emission = this.gameObject.GetComponent<Renderer>().material.color;
+        
         particles = GameObject.Find("Particles");
-        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
+        sprite = GameObject.Find("Star");
+        emission = sprite.GetComponent<Renderer>().material.color;
+        Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<Collider2D>(), this.gameObject.GetComponent<Collider2D>());
         Invoke("DelayDeath", 0.0f);
     }
 
@@ -34,8 +37,8 @@ public class Fireball : MonoBehaviour {
     void DelayDeath() { Destroy(this.gameObject, lifetime); }
 
     void Growth() {
-        this.gameObject.transform.localScale += new Vector3(1.0f, 1.0f, 0.0f) * growthRate; //ambiguous with Vector2
+        this.gameObject.transform.localScale += new Vector3(growthRate, growthRate, 0.0f); //ambiguous with Vector2
         emission -= new Color(0.0f, 0.0f, 0.0f, alphaReduce);
-
+        if (emission.a <= 0) Destroy(this.gameObject);
     }
 }

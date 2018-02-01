@@ -147,6 +147,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114102032607178498, guid: dff174924a9c00b4aa578848ac5c485f,
+        type: 2}
+      propertyPath: growthRate
+      value: 1.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 198406880737396498, guid: dff174924a9c00b4aa578848ac5c485f,
+        type: 2}
+      propertyPath: ShapeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198406880737396498, guid: dff174924a9c00b4aa578848ac5c485f,
+        type: 2}
+      propertyPath: randomSeed
+      value: -831487423
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dff174924a9c00b4aa578848ac5c485f, type: 2}
   m_IsPrefabParent: 0
@@ -543,6 +558,11 @@ Prefab:
     - target: {fileID: 114544157373870636, guid: a35b0e5201e94854297e13f2643e68fa,
         type: 2}
       propertyPath: vertForce
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114136465691975500, guid: a35b0e5201e94854297e13f2643e68fa,
+        type: 2}
+      propertyPath: force
       value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []

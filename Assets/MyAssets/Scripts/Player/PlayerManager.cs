@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour {
     private GameObject playerMovement;
 
     void Awake() {
-        if (playerMovement == null) Instantiate(playerMovement);
+        if (PlayerMovement.instance == null) Instantiate(playerMovement);
         maxHealth = 100;
         curHealth = maxHealth;
         maxMana = 100;
