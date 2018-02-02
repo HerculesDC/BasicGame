@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float vertForce;
 
     public static PlayerMovement instance = null;
+    public static bool facing;
 
     private Rigidbody2D rb2D;
     private bool isGrounded;
@@ -16,18 +17,20 @@ public class PlayerMovement : MonoBehaviour {
 
     void Awake() {
 
+        facing = true;
+
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
         rb2D = GetComponent<Rigidbody2D>();
-        InvokeRepeating("ShowVel", 0.0f, 1.0f);
+        //InvokeRepeating("ShowVel", 0.0f, 1.0f);
         isGrounded = false; // added to avoid errors, think I can do away with that later
     }
 
 	// Use this for initialization
 	void Start () {
-		
+        InvokeRepeating("FacingLog", 0.0f, 1.0f);
 	}
 	
 	// Update is called once per frame
@@ -58,6 +61,9 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
+        if (rb2D.velocity.x > 0) facing = true;
+        else if (rb2D.velocity.x < 0) facing = false;
+        else facing = facing; //keep facing towards whatever it is
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
@@ -71,7 +77,10 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.CompareTag("Ground")) isGrounded = false;
     }
 
-
+    void FacingLog() {
+        Debug.Log(facing.ToString());
+    }
+    
     void ShowVel() {
         Debug.Log(rb2D.velocity.sqrMagnitude.ToString());
     }

@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114136465691975500}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacks: []
-  shoot: {fileID: 0}
+  shoot: {fileID: 1836345762256462, guid: dff174924a9c00b4aa578848ac5c485f, type: 2}
+  force: 250
 --- !u!114 &114544157373870636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced3fc118e700ca409b8a1a5b870afea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHorSpeed: 100
+  maxHorSpeed: 250
   horAccel: 10
-  vertForce: 200
+  vertForce: 250
 --- !u!114 &114569716603625802
 MonoBehaviour:
   m_ObjectHideFlags: 1

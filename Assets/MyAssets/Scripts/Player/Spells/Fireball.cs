@@ -15,13 +15,15 @@ public class Fireball : MonoBehaviour {
     private Color emission;
     private GameObject sprite;
     private GameObject particles;
+    //private GameObject player;
 
     void Awake() {
-        
+
+        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), this.gameObject.GetComponent<Collider2D>());
         particles = GameObject.Find("Particles");
         sprite = GameObject.Find("Star");
         emission = sprite.GetComponent<Renderer>().material.color;
-        Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<Collider2D>(), this.gameObject.GetComponent<Collider2D>());
+        
         Invoke("DelayDeath", 0.0f);
     }
 
